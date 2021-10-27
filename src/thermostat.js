@@ -6,13 +6,12 @@ class Thermostat {
         this.powerSaving = false
     }
 
-    getTemperature = () => { return this.temperature; }
-    getMinimumTemp = () => { return this.minimumTemp; }
-    getMaximumTemp = () => { return this.maximumTemp; }
-    getPowerSavingStatus = () => { return this.powerSaving; }
-
     changePowerSavingStatus() {
-        return this.powerSaving = !this.powerSaving;
+        this.powerSaving = !this.powerSaving;
+
+        if (this.powerSaving) {
+            this.maximumTemp
+        }
     }
 
     increaseTemperature(degrees) {
