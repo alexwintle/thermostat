@@ -46,7 +46,7 @@ describe('Thermostat', () => {
 
     describe('increaseTemperature', () => {
         it('should increase the temperature by (x) amount of degrees', () => {
-            thermostat.increaseTemperature(5); // 20 (default temp) + 5
+            expect(thermostat.increaseTemperature(5)).toEqual(25); // 20 (default temp) + 5
             expect(thermostat.temperature).toEqual(25);
         });
 
@@ -60,27 +60,51 @@ describe('Thermostat', () => {
 
     describe('decreaseTemperature', () => {
         it('should decrease the temperature by (x) amount of degrees', () => {
-            thermostat.decreaseTemperature(5); //20 (default temp) - 5
+            expect(thermostat.decreaseTemperature(5)).toEqual(15); //20 (default temp) - 5
             expect(thermostat.temperature).toEqual(15);
         });
 
         it('should return a message if the potential new temperature is less than the minimum temperature (10 degrees)', () => {
             expect(thermostat.decreaseTemperature(30)).toEqual('Sorry, the minimum temperature is 10 degrees.');
+            expect(thermostat.temperature).toEqual(20);
         });
 
     });
 
     describe('resetTemperature', () => {
         it('should reset the temperature to its default, 20 degrees', () => {
+            expect(thermostat.temperature).toEqual(20);
+            thermostat.increaseTemperature(5);
+
+            expect(thermostat.temperature).toEqual(25);
+
             thermostat.resetTemperature();
+
             expect(thermostat.temperature).toEqual(20);
         });
     });
 
-    // describe('getEnergyUsage', () => {
-    //     it('should return the energy usage of the building (< 18 is low-usage, <= 25 is medium-usage, anything else is high-usage.)', () => {
-    //         expect(thermostat.getEnergyUsage()).toEqual('Green, ');
-    //     });
-    // });
+    describe('getEnergyUsage', () => {
+        it('should return GREEN .)', () => {
+            thermostat.decreaseTemperature(4);
+            expect(thermostat.temperature).toEqual(16);
+
+            expect(thermostat.getEnergyUsage()).toEqual(`Energy Usage: GREEN, Current Temperature: ${thermostat.temperature}`);
+        });
+
+        it('should return the energy usage of the building (< 18 is low-usage, <= 25 is medium-usage, anything else is high-usage.)', () => {
+            thermostat.increaseTemperature(3);
+            expect(thermostat.temperature).toEqual(23);
+
+            expect(thermostat.getEnergyUsage()).toEqual(`Energy Usage: BLACK, Current Temperature: ${thermostat.temperature}`);
+        });
+
+        it('should return the energy usage of the building (< 18 is low-usage, <= 25 is medium-usage, anything else is high-usage.)', () => {
+            thermostat.increaseTemperature(6);
+            expect(thermostat.temperature).toEqual(26);
+
+            expect(thermostat.getEnergyUsage()).toEqual(`Energy Usage: RED, Current temperature: ${thermostat.temperature}`);
+        });
+    });
 
 });

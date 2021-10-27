@@ -40,4 +40,14 @@ class Thermostat {
         return this.temperature = this.temperature = 20;
     }
 
+    getEnergyUsage() {
+        if (this.temperature < 18) {
+            return `Energy Usage: GREEN, Current Temperature: ${this.temperature}`
+        } else if (this.temperature <= 25) {
+            return `Energy Usage: BLACK, Current Temperature: ${this.temperature}`
+        } else {
+            return `Energy Usage: RED, Current temperature: ${this.temperature}`
+        }
+
+    }
 }
