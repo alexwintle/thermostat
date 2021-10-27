@@ -105,6 +105,7 @@ describe('Thermostat', () => {
 
             expect(thermostat.getEnergyUsage()).toEqual(`Energy Usage: RED, Current temperature: ${thermostat.temperature}`);
         });
+
     });
 
 });

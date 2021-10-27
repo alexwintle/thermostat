@@ -2,8 +2,8 @@ class Thermostat {
     constructor() {
         this.temperature = 20;
         this.minimumTemp = 10;
-        this.maximumTemp = 32; // powerSaving is off by default;
-        this.powerSaving = false;
+        this.maximumTemp = 32;
+        this.powerSaving = false; // powerSaving is off by default;
     }
 
     changePowerSavingStatus() {
