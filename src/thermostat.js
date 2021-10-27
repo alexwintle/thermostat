@@ -3,7 +3,7 @@ class Thermostat {
         this.temperature = 20;
         this.minimumTemp = 10;
         this.maximumTemp = 32; // powerSaving is off by default;
-        this.powerSaving = false
+        this.powerSaving = false;
     }
 
     changePowerSavingStatus() {
@@ -15,29 +15,29 @@ class Thermostat {
     }
 
     increaseTemperature(degrees) {
-        let newTemp = this.temperature += degrees;
+        let newTemp = this.temperature + degrees;
 
-        if (newTemp <= this.maximumTemp && this.powerSaving === true) {
-            return newTemp;
+        if (newTemp <= this.maximumTemp) {
+            return this.temperature += degrees;
         } else {
-            return `The maximum temperature is ${this.maximumTemp} degrees.`;
+            return `Sorry, the maximum temperature is ${this.maximumTemp} degrees.`;
         }
 
     }
 
     decreaseTemperature(degrees) {
-        let newTemp = this.temperature -= degrees;
+        let newTemp = this.temperature - degrees
 
-        if (newTemp >= this.maximumTemp) {
-            return newTemp;
+        if (newTemp >= this.minimumTemp) {
+            return this.temperature -= degrees;
         } else {
-            return `The minimum temperature is ${this.minimumTemp} degrees.`;
+            return `Sorry, the minimum temperature is ${this.minimumTemp} degrees.`;
         }
 
     }
 
     resetTemperature() {
-        return this.temperature = this.temperature = 20
+        return this.temperature = this.temperature = 20;
     }
 
 }

@@ -51,19 +51,21 @@ describe('Thermostat', () => {
         });
 
         it('should return a message if the potential new temperature is greater than the maximum temperature (32 degrees by default) and powerSaving is false', () => {
-            expect(thermostat.increaseTemperature(10)).toEqual('The maximum temperature is 32 degrees.')
+            expect(thermostat.maximumTemp).toEqual(32)
+            expect(thermostat.increaseTemperature(20)).toEqual('Sorry, the maximum temperature is 32 degrees.');
+            expect(thermostat.temperature).toEqual(20);
         });
 
     });
 
     describe('decreaseTemperature', () => {
         it('should decrease the temperature by (x) amount of degrees', () => {
-            thermostat.decreaseTemperature(5);
+            thermostat.decreaseTemperature(5); //20 (default temp) - 5
             expect(thermostat.temperature).toEqual(15);
         });
 
         it('should return a message if the potential new temperature is less than the minimum temperature (10 degrees)', () => {
-            expect(thermostat.decreaseTemperature(30)).toEqual('The minimum temperature is 10 degrees.');
+            expect(thermostat.decreaseTemperature(30)).toEqual('Sorry, the minimum temperature is 10 degrees.');
         });
 
     });
@@ -71,8 +73,14 @@ describe('Thermostat', () => {
     describe('resetTemperature', () => {
         it('should reset the temperature to its default, 20 degrees', () => {
             thermostat.resetTemperature();
-           expect(thermostat.temperature).toEqual(20)
+            expect(thermostat.temperature).toEqual(20);
         });
     });
+
+    // describe('getEnergyUsage', () => {
+    //     it('should return the energy usage of the building (< 18 is low-usage, <= 25 is medium-usage, anything else is high-usage.)', () => {
+    //         expect(thermostat.getEnergyUsage()).toEqual('Green, ');
+    //     });
+    // });
 
 });
