@@ -9,8 +9,8 @@ class Thermostat {
     changePowerSavingStatus() {
         this.powerSaving = !this.powerSaving;
 
-        if (this.powerSaving) {
-            this.maximumTemp
+        if (this.powerSaving === true) {
+            this.maximumTemp = this.maximumTemp = 25;
         }
     }
 

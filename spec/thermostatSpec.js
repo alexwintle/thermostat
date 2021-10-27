@@ -36,7 +36,10 @@ describe('Thermostat', () => {
         });
 
         it('should change the maximum temperature so that when power saving is on, it is 25, when off then max temp is 32', () => {
-            expect(thermostat.maximumTemp).toEqual(32)
+            expect(thermostat.maximumTemp).toEqual(32);
+
+            thermostat.changePowerSavingStatus();
+            expect(thermostat.maximumTemp).toEqual(25);
         });
 
     });
