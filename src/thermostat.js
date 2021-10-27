@@ -36,4 +36,8 @@ class Thermostat {
 
     }
 
+    resetTemperature() {
+        return this.temperature = this.temperature = 20
+    }
+
 }

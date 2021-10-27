@@ -68,4 +68,11 @@ describe('Thermostat', () => {
 
     });
 
+    describe('resetTemperature', () => {
+        it('should reset the temperature to its default, 20 degrees', () => {
+            thermostat.resetTemperature();
+           expect(thermostat.temperature).toEqual(20)
+        });
+    });
+
 });
