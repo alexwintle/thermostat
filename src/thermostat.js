@@ -4,15 +4,15 @@ class Thermostat {
     constructor() {
         this.temperature = 20;
         this.minimumTemp = 10;
-        this.maximumTemp = 32;
-        this.powerSaving = false; // powerSaving is off by default;
+        this.maximumTemp = 25;
+        this.powerSaving = true; // powerSaving is on by default;
     }
 
     changePowerSavingStatus() {
         this.powerSaving = !this.powerSaving;
 
-        if (this.powerSaving === true) {
-            this.maximumTemp = this.maximumTemp = 25;
+        if (this.powerSaving === false) {
+            this.maximumTemp = this.maximumTemp = 32;
         }
     }
 
@@ -22,7 +22,7 @@ class Thermostat {
         if (newTemp <= this.maximumTemp) {
             return this.temperature += degrees;
         } else {
-            return `Sorry, the maximum temperature is ${this.maximumTemp} degrees.`;
+            return(`Sorry, the maximum temperature is ${this.maximumTemp} degrees.`);
         }
 
     }
@@ -33,7 +33,7 @@ class Thermostat {
         if (newTemp >= this.minimumTemp) {
             return this.temperature -= degrees;
         } else {
-            return `Sorry, the minimum temperature is ${this.minimumTemp} degrees.`;
+            return (`Sorry, the minimum temperature is ${this.minimumTemp} degrees.`);
         }
 
     }
