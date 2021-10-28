@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Thermostat', () => {
     let thermostat;
 
@@ -85,21 +87,21 @@ describe('Thermostat', () => {
     });
 
     describe('getEnergyUsage', () => {
-        it('should return GREEN .)', () => {
+        it('should return GREEN and current temperature', () => {
             thermostat.decreaseTemperature(4);
             expect(thermostat.temperature).toEqual(16);
 
             expect(thermostat.getEnergyUsage()).toEqual(`Energy Usage: GREEN, Current Temperature: ${thermostat.temperature}`);
         });
 
-        it('should return the energy usage of the building (< 18 is low-usage, <= 25 is medium-usage, anything else is high-usage.)', () => {
+        it('should return BLACK and current temperature', () => {
             thermostat.increaseTemperature(3);
             expect(thermostat.temperature).toEqual(23);
 
             expect(thermostat.getEnergyUsage()).toEqual(`Energy Usage: BLACK, Current Temperature: ${thermostat.temperature}`);
         });
 
-        it('should return the energy usage of the building (< 18 is low-usage, <= 25 is medium-usage, anything else is high-usage.)', () => {
+        it('should return RED and current temperature', () => {
             thermostat.increaseTemperature(6);
             expect(thermostat.temperature).toEqual(26);
 

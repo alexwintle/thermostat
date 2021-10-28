@@ -1,3 +1,5 @@
+'use strict';
+
 class Thermostat {
     constructor() {
         this.temperature = 20;
@@ -15,7 +17,7 @@ class Thermostat {
     }
 
     increaseTemperature(degrees) {
-        let newTemp = this.temperature + degrees;
+        const newTemp = this.temperature + degrees;
 
         if (newTemp <= this.maximumTemp) {
             return this.temperature += degrees;
@@ -26,7 +28,7 @@ class Thermostat {
     }
 
     decreaseTemperature(degrees) {
-        let newTemp = this.temperature - degrees
+        const newTemp = this.temperature - degrees
 
         if (newTemp >= this.minimumTemp) {
             return this.temperature -= degrees;
