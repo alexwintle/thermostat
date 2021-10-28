@@ -8,14 +8,6 @@ class Thermostat {
         this.powerSaving = true; // powerSaving is on by default;
     }
 
-    changePowerSavingStatus() {
-        this.powerSaving = !this.powerSaving;
-
-        if (this.powerSaving === false) {
-            this.maximumTemp = this.maximumTemp = 32;
-        }
-    }
-
     increaseTemperature(degrees) {
         const newTemp = this.temperature + degrees;
 
@@ -24,7 +16,6 @@ class Thermostat {
         } else {
             return(`Sorry, the maximum temperature is ${this.maximumTemp} degrees.`);
         }
-
     }
 
     decreaseTemperature(degrees) {
@@ -35,11 +26,15 @@ class Thermostat {
         } else {
             return (`Sorry, the minimum temperature is ${this.minimumTemp} degrees.`);
         }
-
     }
 
     resetTemperature() {
-        return this.temperature = this.temperature = 20;
+        return this.temperature = 20;
+    }
+
+    changePowerSavingStatus() {
+        this.powerSaving = !this.powerSaving;
+        this._updateMaxTempWhenPowerSavingStatusChanges()
     }
 
     getEnergyUsage() {
@@ -51,5 +46,11 @@ class Thermostat {
             return `Energy Usage: RED, Current temperature: ${this.temperature}`
         }
 
+    }
+
+    _updateMaxTempWhenPowerSavingStatusChanges() {
+        if (this.powerSaving === false) {
+            this.maximumTemp = 32;
+        }
     }
 }
